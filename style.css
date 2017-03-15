@@ -1,0 +1,76 @@
+html {
+	postion: relative;
+	min-height: 100%;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	background: linear-gradient(rgba(255,128,0,1), rgba(255,151,47,1));
+	height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.btn-search {
+	margin-left: none;
+}
+
+.title {
+	font-size: 70px;
+	font-weight: 700;
+	color: white;
+	margin-top: 100px;
+	margin-bottom: 90px;
+}
+
+.capitais {
+	margin-top:0;
+	margin-bottom: 20px;
+	font-size: 35px;
+	font-weight: 700;
+	color: white;
+}
+.middle-line {
+	margin-top: 80px;
+}
+.stylish-input-group .input-group-addon{
+    background: white !important;
+}
+.stylish-input-group .form-control{
+	border-right:0;
+	box-shadow:0 0 0;
+	border-color:#ccc;
+	height:50px;
+}
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+}
+
+.list-min-1, .list-max-1, .list-cities-1,
+.list-min-2, .list-max-2, .list-cities-2 {
+	color: black;
+	size: 16px;
+	font-weight: 700;
+}
+
+.list-min-1 li, .list-max-1 li, .list-cities-1 li,
+.list-min-2 li, .list-max-2 li, .list-cities-2 li {
+	margin: 2px;
+	margin-bottom: 25px;
+}
+
+#imaginary_container {
+	margin-left: 80px;
+}
+::-webkit-input-placeholder {
+   font-size: 20px!important;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+      font-size: 20px!important;
+}
+::-moz-placeholder {  /* Firefox 19+ */
+      font-size: 20px!important;
+}
