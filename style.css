@@ -31,8 +31,16 @@ body {
 	font-weight: 700;
 	color: white;
 }
-.middle-line {
+.middleLine {
 	margin-top: 80px;
+}
+.panelLine {
+	border: 0.1px solid orange;
+}
+.weatherPanel {
+	background-color: rgba(255,255,255,0.9);
+	border: 0.1px solid black;
+	margin-bottom: 20px;
 }
 .stylish-input-group .input-group-addon{
     background: white !important;
@@ -73,4 +81,76 @@ body {
 }
 ::-moz-placeholder {  /* Firefox 19+ */
       font-size: 20px!important;
+}
+
+.wind {
+	display: inline;
+	margin-left: 20px;
+	margin-right:15px;
+}
+
+.temperature {
+	display: inline;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.mainTemperature {
+	font-weight: 900;
+	margin-left: 20px;
+	margin-bottom: 25px;
+	text-align: center;
+	font-size: 50px;
+	color: black;
+}
+
+.mainCity {
+	font-weight: 800;
+	margin-left: 20px;
+	margin-top: 10px;
+	float: left
+}
+
+.listTemperatures {
+	color: orange;
+	font-weight: 800;
+	margin-left:5px
+}
+
+.daysTemperatures li {
+	font-weight: 800;
+}
+
+.glyphicon {
+	color:orange;
+}
+
+.temperature {
+	font-weight: 800
+}
+
+.col-sm-6 {
+	
+}
+
+.exitButton {
+	margin-top: 10px;
+	background: transparent;
+	border: none;
+}
+
+
+
+
+
+.sensa {
+	display: inline;
+}
+
+.water {
+	display: inline;
+}
+
+.informationRow {
+	text-align: center;
 }
