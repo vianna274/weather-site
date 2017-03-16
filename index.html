@@ -13,164 +13,172 @@
 		<script src="https://unpkg.com/vue@2.0.3/dist/vue.js"></script>
 		<script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
 		<script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
-		<script src="https://query.yahooapis.com/v1/public/yql?q=select wind from weather.forecast where woeid in (select woeid from geo.places(1) where text='chicago, il')&format=json&callback=callbackFunction"></script>
 		
   </head>
   <body>
-    <div id='apiYahoo'>
-      <div class="container">
-    		<div class="row">
-    		  <div class='text-center'>
-    				<h1 class='title'>Previsão do Tempo</h1>
-    		  </div>
-    		</div>
+		<div style="display: none" id="hideAll">
+			<div id='apiYahoo'>
+				<div class="container">
+					<div class="row">
+						<div class='text-center'>
+							<h1 class='title'>Previsão do Tempo</h1>
+						</div>
+					</div>
 
-        <div class='row'>
-          <div class='api' v-if='seen'>
-						<div class='col-sm-6 col-sm-offset-3 weatherPanel '>
-							<p class='mainCity'>{{mainCity}}</p>
-							<p class='text-right'><button type="submit" class = 'exitButton' v-on:click="exit += 1, seen = !seen"><i class='glyphicon glyphicon-remove'></i></button></p>
-
-							<h1 class='mainTemperature'>{{mainTemperature}} {{mainState}}</h1>
-							<div class='informations'>
-								<div class='row informationRow'>
-									<p class='temperature'><i class='glyphicon glyphicon-arrow-down'></i> {{mainLowTemp}}  <i class='glyphicon glyphicon-arrow-up'></i> {{mainHighTemp}}</p>
-									<p class='sensa'>Sensação <strong>{{mainSensation}}</strong></p>
+					<div class='row'>
+						<div class='api' v-if='seen'>
+							<div class='col-sm-6 col-sm-offset-3 weatherPanel '>
+								<p class='mainCity'>{{mainCity}}</p>
+								<p class='text-right'><button type="submit" class = 'exitButton' v-on:click="exit += 1, seen = !seen"><i class='glyphicon glyphicon-remove'></i></button></p>
+								<h1 class='mainTemperature'>{{mainTemperature}} {{mainState}}</h1>
+								<div class='informations'>
+									<div class='row informationRow'>
+										<p class='temperature'><i class='glyphicon glyphicon-arrow-down'></i> {{mainLowTemp}}  <i class='glyphicon glyphicon-arrow-up'></i> {{mainHighTemp}}</p>
+										<p class='sensa'>Sensação <strong>{{mainSensation}}</strong></p>
+									</div>
+									<div class='row informationRow'>
+										<p class='wind'>Vento <strong>{{mainSpeed}}</strong></p>
+										<p class='water'> Humidade <strong>{{mainHumidity}}</strong></p>
+									</div>
 								</div>
-								<div class='row informationRow'>
-									<p class='wind'>Vento <strong>{{mainSpeed}}</strong></p>
-									<p class='water'> Humidade <strong>{{mainHumidity}}</strong></p>
+								<hr width="400" class='panelLine'>
+								<ul class='list-inline text-center daysTemperatures'>
+									<li>{{firstDay}}
+										<ul class='list-inline listTemperatures'>
+											<li>{{firstDayLowTemp}}</li>
+											<li>{{firstDayHighTemp}}</li>
+											</ul>
+									</li>
+									<li>{{secondDay}}
+										<ul class='list-inline listTemperatures'>
+											<li>{{secondDayLowTemp}}</li>
+											<li>{{secondDayHighTemp}}</li>
+										</ul>
+									</li>
+									<li>{{thirdDay}}
+										<ul class='list-inline listTemperatures'>
+											<li>{{thirdDayLowTemp}}</li>
+											<li>{{thirdDayHighTemp}}</li>
+										</ul>
+									</li>
+									<li>{{fourthDay}}
+										<ul class='list-inline listTemperatures'>
+											<li>{{fourthDayLowTemp}}</li>
+											<li>{{fourthDayHighTemp}}</li>
+										</ul>
+									</li>
+									<li>{{fifthDay}}
+										<ul class='list-inline listTemperatures'>
+											<li>{{fifthDayLowTemp}}</li>
+											<li>{{fifthDayHighTemp}}</li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+					 <div class="col-sm-5 col-sm-offset-3">
+						 <div id="imaginary_container">
+							 <div class="input-group stylish-input-group">
+								 <input type="search" class="form-control"  placeholder="Insira aqui o nome da cidade" v-model="cityInput">
+									<span class="input-group-addon">
+										<button type="submit" v-on:click="counter += 1">
+											<span class="glyphicon glyphicon-search"></span>
+										</button>
+									</span>
 								</div>
 							</div>
-							<hr width="400" class='panelLine'>
-							<ul class='list-inline text-center daysTemperatures'>
-								<li>{{firstDay}}
-								<ul class='list-inline listTemperatures'>
-									<li>{{firstDayLowTemp}}</li>
-									<li>{{firstDayHighTemp}}</li>
-									</ul></li>
-								<li>{{secondDay}}
-								<ul class='list-inline listTemperatures'>
-									<li>{{secondDayLowTemp}}</li>
-									<li>{{secondDayHighTemp}}</li>
-								</ul></li>
-								<li>{{thirdDay}}
-								<ul class='list-inline listTemperatures'>
-									<li>{{thirdDayLowTemp}}</li>
-									<li>{{thirdDayHighTemp}}</li>
-								</ul></li>
-								<li>{{fourthDay}}
-								<ul class='list-inline listTemperatures'>
-									<li>{{fourthDayLowTemp}}</li>
-									<li>{{fourthDayHighTemp}}</li>
-								</ul></li>
-								<li>{{fifthDay}}
-								<ul class='list-inline listTemperatures'>
-									<li>{{fifthDayLowTemp}}</li>
-									<li>{{fifthDayHighTemp}}</li>
-								</ul></li>
+						</div>
+					</div>
+
+					<div class='row'>
+						<div class='col-sm-5 col-sm-offset-2'>
+						<hr width="740" class='middleLine'>
+						</div>
+					</div>
+					
+					<div class='row'>
+						<div class='col-sm-4 col-sm-offset-3'>
+						<h2 class='capitais'>Capitais</h2>
+						</div>
+					</div>
+					
+					<div class='row'>
+						<div class='col-sm-3 col-sm-offset-3'>
+							<ul class='list-inline'>
+								<li><p>Min</p>
+									<ul class='list-unstyled list-min-1'>
+										<li>18*</li>
+										<li>18*</li>
+										<li>18*</li>
+										<li>18*</li>
+										<li>18*</li>
+									</ul>
+								</li>
+								<li><p>Max</p>
+									<ul class='list-unstyled list-max-1'>
+										<li>27*</li>
+										<li>27*</li>
+										<li>27*</li>
+										<li>27*</li>
+										<li>27*</li>
+									</ul>
+								</li>
+								<li>
+									<ul class='list-unstyled list-cities-1'>
+										<li> </li>
+										<li>Rio de Janeiro</li>
+										<li>Rio de Janeiro</li>
+										<li>Rio de Janeiro</li>
+										<li>Rio de Janeiro</li>
+										<li>Rio de Janeiro</li>
+									</ul>
+								</li>
 							</ul>
 						</div>
-          </div>
-        </div>
-
-		    <div class="row">
-  		   <div class="col-sm-5 col-sm-offset-3">
-    			 <div id="imaginary_container">
-    			   <div class="input-group stylish-input-group">
-    				 <input type="search" class="form-control"  placeholder="Insira aqui o nome da cidade" v-model="cityInput">
-    				  <span class="input-group-addon">
-    					<button type="submit" v-on:click="counter += 1">
-    					  <span class="glyphicon glyphicon-search"></span>
-    					</button>
-    				  </span>
-    				</div>
-    			  </div>
-  		    </div>
-		    </div>
-
-		<div class='row'>
-		  <div class='col-sm-5 col-sm-offset-2'>
-			<hr width="740" class='middleLine'>
-		  </div>
+						<div class='col-sm-3'>
+							<ul class='list-inline'>
+								<li><p>Min</p>
+									<ul class='list-unstyled list-min-2'>
+										<li>18*</li>
+										<li>18*</li>
+										<li>18*</li>
+										<li>18*</li>
+										<li>18*</li>
+									</ul>
+								</li>
+								<li><p>Max</p>
+									<ul class='list-unstyled list-max-2'>
+										<li>27*</li>
+										<li>27*</li>
+										<li>27*</li>
+										<li>27*</li>
+										<li>27*</li>
+									</ul>
+								</li>
+								<li>
+									<ul class='list-unstyled list-cities-2'>
+										<li> </li>
+										<li>Rio de Janeiro</li>
+										<li>Rio de Janeiro</li>
+										<li>Rio de Janeiro</li>
+										<li>Rio de Janeiro</li>
+										<li>Rio de Janeiro</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class='footer'>
+			</div>
+			
 		</div>
-		<div class='row'>
-		  <div class='col-sm-4 col-sm-offset-3'>
-			<h2 class='capitais'>Capitais</h2>
-		  </div>
-		</div>
-		<div class='row'>
-		  <div class='col-sm-3 col-sm-offset-3'>
-			<ul class='list-inline'>
-			  <li><p>Min</p>
-				<ul class='list-unstyled list-min-1'>
-				  <li>18*</li>
-				  <li>18*</li>
-				  <li>18*</li>
-				  <li>18*</li>
-				  <li>18*</li>
-				</ul>
-			  </li>
-			  <li><p>Max</p>
-				<ul class='list-unstyled list-max-1'>
-				  <li>27*</li>
-				  <li>27*</li>
-				  <li>27*</li>
-				  <li>27*</li>
-				  <li>27*</li>
-				</ul>
-			  </li>
-			  <li>
-				<ul class='list-unstyled list-cities-1'>
-				  <li> </li>
-				  <li>Rio de Janeiro</li>
-				  <li>Rio de Janeiro</li>
-				  <li>Rio de Janeiro</li>
-				  <li>Rio de Janeiro</li>
-				  <li>Rio de Janeiro</li>
-				</ul>
-			  </li>
-			</ul>
-		  </div>
-		  <div class='col-sm-3'>
-			<ul class='list-inline'>
-			  <li><p>Min</p>
-				<ul class='list-unstyled list-min-2'>
-				  <li>18*</li>
-				  <li>18*</li>
-				  <li>18*</li>
-				  <li>18*</li>
-				  <li>18*</li>
-				</ul>
-			  </li>
-			  <li><p>Max</p>
-				<ul class='list-unstyled list-max-2'>
-				  <li>27*</li>
-				  <li>27*</li>
-				  <li>27*</li>
-				  <li>27*</li>
-				  <li>27*</li>
-				</ul>
-			  </li>
-			  <li>
-				<ul class='list-unstyled list-cities-2'>
-				  <li> </li>
-				  <li>Rio de Janeiro</li>
-				  <li>Rio de Janeiro</li>
-				  <li>Rio de Janeiro</li>
-				  <li>Rio de Janeiro</li>
-				  <li>Rio de Janeiro</li>
-				</ul>
-			  </li>
-			</ul>
-		  </div>
-		</div>
-	  </div>
-	</div>
-    <div class='footer'>
-    </div>
   </body>
-
   <!-- IMPORTS FROM JAVASCRIPT -->
 	<script>
 			var apiYahoo = new Vue ({
@@ -439,5 +447,9 @@
 				})
 				}
 			})
+		</script>
+		<!-- LOAD MASK -->
+		<script type="text/javascript">
+			document.getElementById("hideAll").style.display = "block";
 		</script>
 </html>
