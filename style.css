@@ -69,9 +69,7 @@ body {
 	margin-bottom: 25px;
 }
 
-#imaginary_container {
-	margin-left: 80px;
-}
+
 ::-webkit-input-placeholder {
    font-size: 20px!important;
 }
@@ -153,4 +151,14 @@ body {
 
 .informationRow {
 	text-align: center;
+}
+
+@media screen and (max-width:768px) {
+	.middleLine {
+		width:100; 
+	}
+} 
+
+.mainContent {
+	max-width: 1000px;
 }
