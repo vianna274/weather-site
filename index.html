@@ -27,70 +27,76 @@
 
 					<div class='row'>
 						<div class='api' v-if='seen'>
-							<div class='col-sm-6 col-sm-offset-3 weatherPanel '>
-								<p class='mainCity'>{{mainCity}}</p>
-								<p class='text-right'><button type="submit" class = 'exitButton' v-on:click="exit += 1, seen = !seen"><i class='glyphicon glyphicon-remove'></i></button></p>
-								<h1 class='mainTemperature'>{{mainTemperature}} {{mainState}}</h1>
-								<div class='informations'>
-									<div class='row informationRow'>
-										<p class='temperature'><i class='glyphicon glyphicon-arrow-down'></i> {{mainLowTemp}}  <i class='glyphicon glyphicon-arrow-up'></i> {{mainHighTemp}}</p>
-										<p class='sensa'>Sensação <strong>{{mainSensation}}</strong></p>
-									</div>
-									<div class='row informationRow'>
-										<p class='wind'>Vento <strong>{{mainSpeed}}</strong></p>
-										<p class='water'> Humidade <strong>{{mainHumidity}}</strong></p>
-									</div>
+							<center>
+								<div class='col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 weatherPanel '>
+									<center>
+										<p class='mainCity'>{{mainCity}}</p>
+										<p class='text-right'><button type="submit" class = 'exitButton' v-on:click="exit += 1, seen = !seen"><i class='glyphicon glyphicon-remove'></i></button></p>
+										<h1 class='mainTemperature'>{{mainTemperature}} {{mainState}}</h1>
+										<div class='informations'>
+											<div class='row informationRow'>
+												<p class='temperature'><i class='glyphicon glyphicon-arrow-down'></i> {{mainLowTemp}}  <i class='glyphicon glyphicon-arrow-up'></i> {{mainHighTemp}}</p>
+												<p class='sensa'>Sensação <strong>{{mainSensation}}</strong></p>
+											</div>
+											<div class='row informationRow'>
+												<p class='wind'>Vento <strong>{{mainSpeed}}</strong></p>
+												<p class='water'> Humidade <strong>{{mainHumidity}}</strong></p>
+											</div>
+										</div>
+										<hr width="400" class='panelLine'>
+										<ul class='list-inline text-center daysTemperatures'>
+											<li>{{firstDay}}
+												<ul class='list-inline listTemperatures'>
+													<li>{{firstDayLowTemp}}</li>
+													<li>{{firstDayHighTemp}}</li>
+													</ul>
+											</li>
+											<li>{{secondDay}}
+												<ul class='list-inline listTemperatures'>
+													<li>{{secondDayLowTemp}}</li>
+													<li>{{secondDayHighTemp}}</li>
+												</ul>
+											</li>
+											<li>{{thirdDay}}
+												<ul class='list-inline listTemperatures'>
+													<li>{{thirdDayLowTemp}}</li>
+													<li>{{thirdDayHighTemp}}</li>
+												</ul>
+											</li>
+											<li>{{fourthDay}}
+												<ul class='list-inline listTemperatures'>
+													<li>{{fourthDayLowTemp}}</li>
+													<li>{{fourthDayHighTemp}}</li>
+												</ul>
+											</li>
+											<li>{{fifthDay}}
+												<ul class='list-inline listTemperatures'>
+													<li>{{fifthDayLowTemp}}</li>
+													<li>{{fifthDayHighTemp}}</li>
+												</ul>
+											</li>
+										</ul>
+									</center>
 								</div>
-								<hr width="400" class='panelLine'>
-								<ul class='list-inline text-center daysTemperatures'>
-									<li>{{firstDay}}
-										<ul class='list-inline listTemperatures'>
-											<li>{{firstDayLowTemp}}</li>
-											<li>{{firstDayHighTemp}}</li>
-											</ul>
-									</li>
-									<li>{{secondDay}}
-										<ul class='list-inline listTemperatures'>
-											<li>{{secondDayLowTemp}}</li>
-											<li>{{secondDayHighTemp}}</li>
-										</ul>
-									</li>
-									<li>{{thirdDay}}
-										<ul class='list-inline listTemperatures'>
-											<li>{{thirdDayLowTemp}}</li>
-											<li>{{thirdDayHighTemp}}</li>
-										</ul>
-									</li>
-									<li>{{fourthDay}}
-										<ul class='list-inline listTemperatures'>
-											<li>{{fourthDayLowTemp}}</li>
-											<li>{{fourthDayHighTemp}}</li>
-										</ul>
-									</li>
-									<li>{{fifthDay}}
-										<ul class='list-inline listTemperatures'>
-											<li>{{fifthDayLowTemp}}</li>
-											<li>{{fifthDayHighTemp}}</li>
-										</ul>
-									</li>
-								</ul>
-							</div>
+							</center>
 						</div>
 					</div>
 
 					<div class="row">
-					 <div class="col-md-5 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-7 col-xs-offset-2">
-						 <div id="imaginary_container">
-							 <div class="input-group stylish-input-group">
-								 <input type="search" class="form-control"  placeholder="Insira aqui o nome da cidade" v-model="cityInput">
-								<span class="input-group-addon">
-									<button type="submit" v-on:click="counter += 1">
-										<span class="glyphicon glyphicon-search"></span>
-									</button>
-								</span>
+						<center>
+						 <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-7">
+							 <div id="imaginary_container">
+								 <div class="input-group stylish-input-group">
+									 <input type="search" class="form-control"  placeholder="Insira aqui o nome da cidade" v-model="cityInput">
+									<span class="input-group-addon">
+										<button type="submit" v-on:click="counter += 1">
+											<span class="glyphicon glyphicon-search"></span>
+										</button>
+									</span>
+									</div>
 								</div>
 							</div>
-						</div>
+						</center>
 					</div>
 
 					<div class='row'>
@@ -111,30 +117,30 @@
 							<ul class='list-inline'>
 								<li><p>Min</p>
 									<ul class='list-unstyled list-min-1'>
-										<li>18*</li>
-										<li>18*</li>
-										<li>18*</li>
-										<li>18*</li>
-										<li>18*</li>
+										<li>{{firstCapitalLow}}</li>
+										<li>{{secondCapitalLow}}</li>
+										<li>{{thirdCapitalLow}}</li>
+										<li>{{fourthCapitalLow}}</li>
+										<li>{{fifthCapitalLow}}</li>
 									</ul>
 								</li>
 								<li><p>Max</p>
 									<ul class='list-unstyled list-max-1'>
-										<li>27*</li>
-										<li>27*</li>
-										<li>27*</li>
-										<li>27*</li>
-										<li>27*</li>
+										<li>{{firstCapitalHigh}}</li>
+										<li>{{secondCapitalHigh}}</li>
+										<li>{{thirdCapitalHigh}}</li>
+										<li>{{fourthCapitalHigh}}</li>
+										<li>{{fifthCapitalHigh}}</li>
 									</ul>
 								</li>
 								<li>
 									<ul class='list-unstyled list-cities-1'>
 										<li> </li>
-										<li>Rio de Janeiro</li>
-										<li>Rio de Janeiro</li>
-										<li>Rio de Janeiro</li>
-										<li>Rio de Janeiro</li>
-										<li>Rio de Janeiro</li>
+										<li>{{firstCapital}}</li>
+										<li>{{secondCapital}}</li>
+										<li>{{thirdCapital}}</li>
+										<li>{{fourthCapital}}</li>
+										<li>{{fifthCapital}}</li>
 									</ul>
 								</li>
 							</ul>
@@ -143,30 +149,30 @@
 							<ul class='list-inline'>
 								<li><p>Min</p>
 									<ul class='list-unstyled list-min-2'>
-										<li>18*</li>
-										<li>18*</li>
-										<li>18*</li>
-										<li>18*</li>
-										<li>18*</li>
+										<li>{{sixthCapitalLow}}</li>
+										<li>{{seventhCapitalLow}}</li>
+										<li>{{eighthCapitalLow}}</li>
+										<li>{{ninthCapitalLow}}</li>
+										<li>{{tenthCapitalLow}}</li>
 									</ul>
 								</li>
 								<li><p>Max</p>
 									<ul class='list-unstyled list-max-2'>
-										<li>27*</li>
-										<li>27*</li>
-										<li>27*</li>
-										<li>27*</li>
-										<li>27*</li>
+										<li>{{sixthCapitalHigh}}</li>
+										<li>{{seventhCapitalHigh}}</li>
+										<li>{{eighthCapitalHigh}}</li>
+										<li>{{ninthCapitalHigh}}</li>
+										<li>{{tenthCapitalHigh}}</li>
 									</ul>
 								</li>
 								<li>
 									<ul class='list-unstyled list-cities-2'>
 										<li> </li>
-										<li>Rio de Janeiro</li>
-										<li>Rio de Janeiro</li>
-										<li>Rio de Janeiro</li>
-										<li>Rio de Janeiro</li>
-										<li>Rio de Janeiro</li>
+										<li>{{sixthCapital}}</li>
+										<li>{{seventhCapital}}</li>
+										<li>{{eighthCapital}}</li>
+										<li>{{ninthCapital}}</li>
+										<li>{{tenthCapital}}</li>
 									</ul>
 								</li>
 							</ul>
@@ -212,12 +218,49 @@
 					fifthDayHighTemp: '',
 					counter: 0,
 					seen: false,
-					exit: 0
+					exit: 0,
+					firstCapitalLow: '',
+					secondCapitalLow: '',
+					thirdCapitalLow: '',
+					fourthCapitalLow: '',
+					fifthCapitalLow: '',
+					firstCapitalHigh: '',
+					secondCapitalHigh: '',
+					thirdCapitalHigh: '',
+					fourthCapitalHigh: '',
+					fifthCapitalHigh: '',
+					firstCapital: '',
+					secondCapital: '',
+					thirdCapital: '',
+					fourthCapital: '',
+					fifthCapital: '',
+					sixthCapitalLow: '',
+					seventhCapitalLow: '',
+					eighthCapitalLow: '',
+					ninthCapitalLow: '',
+					tenthCapitalLow: '',
+					sixthCapitalHigh: '',
+					seventhCapitalHigh: '',
+					eighthCapitalHigh: '',
+					ninthCapitalHigh: '',
+					tenthCapitalHigh: '',
+					sixthCapital: '',
+					seventhCapital: '',
+					eighthCapital: '',
+					ninthCapital: '',
+					tenthCapital: '',
+					tempCapital: '',
+					tempLow: '',
+					tempHigh: ''
+				},
+				beforeMount() {
+					this.searchCapitals()
+
 				},
 				watch: {
 					counter: function () {
 						if (this.cityInput.length > 0) {
-							this.searchCity()
+							this.searchCity()	
 						}
 					},
 					exit: function () {
@@ -240,7 +283,6 @@
 										app.mainHighTemp = app.fahrenheitCelsius(resume.item.forecast[0].high)
 										app.mainSpeed = app.mphKmh(resume.wind.speed)
 										app.mainSensation = 'Nop'
-
 										app.firstDay = app.translateDays(resume.item.forecast[1].day)
 										app.secondDay = app.translateDays(resume.item.forecast[2].day)
 										app.thirdDay = app.translateDays(resume.item.forecast[3].day)
@@ -259,7 +301,6 @@
 										app.seen = true
 									})
 						this.cityOutput = ''
-
 					}),
 					mphKmh: (function (mph) {
 						var kmh = Math.trunc(Number(Number(mph) * 1.609344)) + 'km/h'
@@ -268,6 +309,82 @@
 					fahrenheitCelsius: (function (fah) {
 						var celius = Math.trunc((Number(fah)-32)/1.8)
 						return celius + 'º'
+					}),
+					searchCapitals:  (function () {
+						var app = this
+						var query = this.updateQuery('Rio de Janeiro')
+						axios.get(query).then(function(response) {
+										var resume = response.data.query.results.channel
+										app.firstCapital = resume.location.city
+										app.firstCapitalHigh = app.fahrenheitCelsius(resume.item.forecast[0].high)
+										app.firstCapitalLow = app.fahrenheitCelsius(resume.item.forecast[0].low)
+						})
+						query = this.updateQuery('São Paulo')
+						axios.get(query).then(function(response) {
+										var resume = response.data.query.results.channel
+										app.secondCapital = resume.location.city
+										app.secondCapitalHigh = app.fahrenheitCelsius(resume.item.forecast[0].high)
+										app.secondCapitalLow = app.fahrenheitCelsius(resume.item.forecast[0].low)
+						})
+						query = this.updateQuery('Porto Alegre')
+						axios.get(query).then(function(response) {
+										var resume = response.data.query.results.channel
+										app.thirdCapital = resume.location.city
+										app.thirdCapitalHigh = app.fahrenheitCelsius(resume.item.forecast[0].high)
+										app.thirdCapitalLow = app.fahrenheitCelsius(resume.item.forecast[0].low)
+						})
+						query = this.updateQuery('Brasília')
+						axios.get(query).then(function(response) {
+										var resume = response.data.query.results.channel
+										app.fourthCapital = resume.location.city
+										app.fourthCapitalHigh = app.fahrenheitCelsius(resume.item.forecast[0].high)
+										app.fourthCapitalLow = app.fahrenheitCelsius(resume.item.forecast[0].low)
+						})
+						query = this.updateQuery('Salvador')
+						axios.get(query).then(function(response) {
+										var resume = response.data.query.results.channel
+										app.fifthCapital = resume.location.city
+										app.fifthCapitalHigh = app.fahrenheitCelsius(resume.item.forecast[0].high)
+										app.fifthCapitalLow = app.fahrenheitCelsius(resume.item.forecast[0].low)
+						})
+						query = this.updateQuery('Belo Horizonte')
+						axios.get(query).then(function(response) {
+										var resume = response.data.query.results.channel
+										app.sixthCapital = resume.location.city
+										app.sixthCapitalHigh = app.fahrenheitCelsius(resume.item.forecast[0].high)
+										app.sixthCapitalLow = app.fahrenheitCelsius(resume.item.forecast[0].low)
+						})
+						query = this.updateQuery('Fortaleza')
+						axios.get(query).then(function(response) {
+										var resume = response.data.query.results.channel
+										app.seventhCapital = resume.location.city
+										app.seventhCapitalHigh = app.fahrenheitCelsius(resume.item.forecast[0].high)
+										app.seventhCapitalLow = app.fahrenheitCelsius(resume.item.forecast[0].low)
+						})
+						query = this.updateQuery('Curitiba')
+						axios.get(query).then(function(response) {
+										var resume = response.data.query.results.channel
+										app.eighthCapital = resume.location.city
+										app.eighthCapitalHigh = app.fahrenheitCelsius(resume.item.forecast[0].high)
+										app.eighthCapitalLow = app.fahrenheitCelsius(resume.item.forecast[0].low)
+						})
+						query = this.updateQuery('Manaus')
+						axios.get(query).then(function(response) {
+										var resume = response.data.query.results.channel
+										app.ninthCapital = resume.location.city
+										app.ninthCapitalHigh = app.fahrenheitCelsius(resume.item.forecast[0].high)
+										app.ninthCapitalLow = app.fahrenheitCelsius(resume.item.forecast[0].low)
+						})
+						query = this.updateQuery('Recife')
+						axios.get(query).then(function(response) {
+										var resume = response.data.query.results.channel
+										app.tenthCapital = resume.location.city
+										app.tenthCapitalHigh = app.fahrenheitCelsius(resume.item.forecast[0].high)
+										app.tenthCapitalLow = app.fahrenheitCelsius(resume.item.forecast[0].low)
+						})
+					}),
+					updateQuery: (function (name) {
+						return 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22' + name + '%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys'
 					}),
 					translateDays: (function (text) {
 						switch(text) {
