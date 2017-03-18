@@ -8,11 +8,7 @@
     <link href="style.css" rel="stylesheet" />
     <!-- IMPORTS FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700" rel="stylesheet">
-		<script src='js/jquery-3.1.1.min.js'></script>
-		<script src='js/bootstrap.min.js'></script>
-		<script src="https://unpkg.com/vue@2.0.3/dist/vue.js"></script>
-		<script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
-		<script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
+		
 		
   </head>
   <body>
@@ -26,60 +22,70 @@
 					</div>
 
 					<div class='row'>
-						<div class='api' v-if='seen'>
-							<center>
-								<div class='col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 weatherPanel '>
-									<center>
-										<p class='mainCity'>{{mainCity}}</p>
-										<p class='text-right'><button type="submit" class = 'exitButton' v-on:click="exit += 1, seen = !seen"><i class='glyphicon glyphicon-remove'></i></button></p>
-										<h1 class='mainTemperature'>{{mainTemperature}} {{mainState}}</h1>
-										<div class='informations'>
-											<div class='row informationRow'>
-												<p class='temperature'><i class='glyphicon glyphicon-arrow-down'></i> {{mainLowTemp}}  <i class='glyphicon glyphicon-arrow-up'></i> {{mainHighTemp}}</p>
-												<p class='sensa'>Sensação <strong>{{mainSensation}}</strong></p>
+						<transition name='fade'>
+							<div class='api' v-if='seen'>
+								<center>				
+									<div class='col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 weatherPanel '>
+										<center>
+											<p class='mainCity'>{{mainCity}}</p>
+											<p class='text-right'><button type="submit" class = 'exitButton' v-on:click="exit += 1, seen = !seen"><i class='glyphicon glyphicon-remove'></i></button></p>
+											<h1 class='mainTemperature'>{{mainTemperature}} {{mainState}}</h1>
+											<div class='informations'>
+												<div class='row informationRow'>
+													<p class='temperature'><i class='glyphicon glyphicon-arrow-down'></i> {{mainLowTemp}}  <i class='glyphicon glyphicon-arrow-up'></i> {{mainHighTemp}}</p>
+													<p class='sensa'>Sensação <strong>{{mainSensation}}</strong></p>
+												</div>
+												<div class='row informationRow'>
+													<p class='wind'>Vento <strong>{{mainSpeed}}</strong></p>
+													<p class='water'> Humidade <strong>{{mainHumidity}}</strong></p>
+												</div>
 											</div>
-											<div class='row informationRow'>
-												<p class='wind'>Vento <strong>{{mainSpeed}}</strong></p>
-												<p class='water'> Humidade <strong>{{mainHumidity}}</strong></p>
-											</div>
-										</div>
-										<hr width="400" class='panelLine'>
-										<ul class='list-inline text-center daysTemperatures'>
-											<li>{{firstDay}}
-												<ul class='list-inline listTemperatures'>
-													<li>{{firstDayLowTemp}}</li>
-													<li>{{firstDayHighTemp}}</li>
+											<hr width="400" class='panelLine'>
+											<ul class='list-inline text-center daysTemperatures'>
+												<li>{{firstDay}}
+													<ul class='list-inline listTemperatures'>
+														<li>{{firstDayLowTemp}}</li>
+														<li>{{firstDayHighTemp}}</li>
+														</ul>
+												</li>
+												<li>{{secondDay}}
+													<ul class='list-inline listTemperatures'>
+														<li>{{secondDayLowTemp}}</li>
+														<li>{{secondDayHighTemp}}</li>
 													</ul>
-											</li>
-											<li>{{secondDay}}
-												<ul class='list-inline listTemperatures'>
-													<li>{{secondDayLowTemp}}</li>
-													<li>{{secondDayHighTemp}}</li>
-												</ul>
-											</li>
-											<li>{{thirdDay}}
-												<ul class='list-inline listTemperatures'>
-													<li>{{thirdDayLowTemp}}</li>
-													<li>{{thirdDayHighTemp}}</li>
-												</ul>
-											</li>
-											<li>{{fourthDay}}
-												<ul class='list-inline listTemperatures'>
-													<li>{{fourthDayLowTemp}}</li>
-													<li>{{fourthDayHighTemp}}</li>
-												</ul>
-											</li>
-											<li>{{fifthDay}}
-												<ul class='list-inline listTemperatures'>
-													<li>{{fifthDayLowTemp}}</li>
-													<li>{{fifthDayHighTemp}}</li>
-												</ul>
-											</li>
-										</ul>
-									</center>
-								</div>
-							</center>
-						</div>
+												</li>
+												<li>{{thirdDay}}
+													<ul class='list-inline listTemperatures'>
+														<li>{{thirdDayLowTemp}}</li>
+														<li>{{thirdDayHighTemp}}</li>
+													</ul>
+												</li>
+												<li>{{fourthDay}}
+													<ul class='list-inline listTemperatures'>
+														<li>{{fourthDayLowTemp}}</li>
+														<li>{{fourthDayHighTemp}}</li>
+													</ul>
+												</li>
+												<li>{{fifthDay}}
+													<ul class='list-inline listTemperatures'>
+														<li>{{fifthDayLowTemp}}</li>
+														<li>{{fifthDayHighTemp}}</li>
+													</ul>
+												</li>
+											</ul>
+										</center>
+									</div>
+								</center>
+							</div>
+						</transition>
+					</div>
+					
+					<div class='row'>
+						<transition name='fade'>
+							<div class='col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 searchError' v-if='searchError'>
+								<h3 class='text-center'>{{searchErrorMessage}}</h3>
+							</div>	
+						</transition>
 					</div>
 
 					<div class="row">
@@ -187,12 +193,16 @@
 		</div>
   </body>
   <!-- IMPORTS FROM JAVASCRIPT -->
+	<script src='js/jquery-3.1.1.min.js'></script>
+	<script src='js/bootstrap.min.js'></script>
+	<script src="https://unpkg.com/vue@2.1.8/dist/vue.js"></script>
+	<script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+	<script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
 	<script>
 			var apiYahoo = new Vue ({
 				el: '#apiYahoo',
 				data: {
 					cityInput: '',
-					cityOutput: '',
 					mainCity: '',
 					mainTemperature: '',
 					mainState: '',
@@ -251,7 +261,9 @@
 					tenthCapital: '',
 					tempCapital: '',
 					tempLow: '',
-					tempHigh: ''
+					tempHigh: '',
+					searchErrorMessage: '',
+					searchError: false
 				},
 				beforeMount() {
 					this.searchCapitals()
@@ -269,36 +281,44 @@
 				},
 				methods: {
 					searchCity: _.debounce(function () {
-						this.cityOutput = 'Searching ...'
+						this.searchError = true
+						this.searchErrorMessage = 'Searching ...'
 						var app = this
 						var query = 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22' + this.cityInput + '%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys'
 						axios.get(query)
 									.then(function(response) {
-										var resume = response.data.query.results.channel
-										app.mainCity = resume.location.city + ', ' + resume.location.region + ' - ' + resume.location.country
-										app.mainHumidity = resume.atmosphere.humidity + '%'
-										app.mainTemperature = app.fahrenheitCelsius(resume.item.condition.temp)
-										app.mainState = app.translateCondition(resume.item.condition.text)
-										app.mainLowTemp = app.fahrenheitCelsius(resume.item.forecast[0].low)
-										app.mainHighTemp = app.fahrenheitCelsius(resume.item.forecast[0].high)
-										app.mainSpeed = app.mphKmh(resume.wind.speed)
-										app.mainSensation = 'Nop'
-										app.firstDay = app.translateDays(resume.item.forecast[1].day)
-										app.secondDay = app.translateDays(resume.item.forecast[2].day)
-										app.thirdDay = app.translateDays(resume.item.forecast[3].day)
-										app.fourthDay = app.translateDays(resume.item.forecast[4].day)
-										app.fifthDay = app.translateDays(resume.item.forecast[5].day)
-										app.firstDayLowTemp = app.fahrenheitCelsius(resume.item.forecast[1].low)
-										app.firstDayHighTemp = app.fahrenheitCelsius(resume.item.forecast[1].high)
-										app.secondDayLowTemp = app.fahrenheitCelsius(resume.item.forecast[2].low)
-										app.secondDayHighTemp = app.fahrenheitCelsius(resume.item.forecast[2].high)
-										app.thirdDayLowTemp = app.fahrenheitCelsius(resume.item.forecast[3].low)
-										app.thirdDayHighTemp = app.fahrenheitCelsius(resume.item.forecast[3].high)
-										app.fourthDayLowTemp = app.fahrenheitCelsius(resume.item.forecast[4].low)
-										app.fourthDayHighTemp = app.fahrenheitCelsius(resume.item.forecast[4].high)
-										app.fifthDayLowTemp = app.fahrenheitCelsius(resume.item.forecast[5].low)
-										app.fifthDayHighTemp = app.fahrenheitCelsius(resume.item.forecast[5].high)
-										app.seen = true
+										if(response.data.query.count != 0) {
+											var resume = response.data.query.results.channel
+											app.mainCity = resume.location.city + ', ' + resume.location.region + ' - ' + resume.location.country
+											app.mainHumidity = resume.atmosphere.humidity + '%'
+											app.mainTemperature = app.fahrenheitCelsius(resume.item.condition.temp)
+											app.mainState = app.translateCondition(resume.item.condition.text)
+											app.mainLowTemp = app.fahrenheitCelsius(resume.item.forecast[0].low)
+											app.mainHighTemp = app.fahrenheitCelsius(resume.item.forecast[0].high)
+											app.mainSpeed = app.mphKmh(resume.wind.speed)
+											app.mainSensation = 'Nop'
+											app.firstDay = app.translateDays(resume.item.forecast[1].day)
+											app.secondDay = app.translateDays(resume.item.forecast[2].day)
+											app.thirdDay = app.translateDays(resume.item.forecast[3].day)
+											app.fourthDay = app.translateDays(resume.item.forecast[4].day)
+											app.fifthDay = app.translateDays(resume.item.forecast[5].day)
+											app.firstDayLowTemp = app.fahrenheitCelsius(resume.item.forecast[1].low)
+											app.firstDayHighTemp = app.fahrenheitCelsius(resume.item.forecast[1].high)
+											app.secondDayLowTemp = app.fahrenheitCelsius(resume.item.forecast[2].low)
+											app.secondDayHighTemp = app.fahrenheitCelsius(resume.item.forecast[2].high)
+											app.thirdDayLowTemp = app.fahrenheitCelsius(resume.item.forecast[3].low)
+											app.thirdDayHighTemp = app.fahrenheitCelsius(resume.item.forecast[3].high)
+											app.fourthDayLowTemp = app.fahrenheitCelsius(resume.item.forecast[4].low)
+											app.fourthDayHighTemp = app.fahrenheitCelsius(resume.item.forecast[4].high)
+											app.fifthDayLowTemp = app.fahrenheitCelsius(resume.item.forecast[5].low)
+											app.fifthDayHighTemp = app.fahrenheitCelsius(resume.item.forecast[5].high)
+											app.searchError = false
+											app.seen = true
+										}
+									else if (response.data.query.count == 0) {
+										app.seen = false
+										app.searchErrorMessage = 'Cidade Inexistente'
+										}
 									})
 						this.cityOutput = ''
 					}),
