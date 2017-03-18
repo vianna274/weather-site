@@ -1,6 +1,6 @@
 # website
 
-A simple website that show the temperatures of any city around the World.
+A simple website that shows the temperatures of any city around the World.
 
 The technologies used to develop this website:
   1. HTML5
