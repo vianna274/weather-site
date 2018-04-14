@@ -4,193 +4,184 @@
     <title>TEMPERATURAS VIANNA</title>
     <!-- IMPORTS FROM CSS3 -->
     <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href='css/main.css' rel='stylesheet'>
-    <link href="style.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
     <!-- IMPORTS FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700" rel="stylesheet">
-		
-		
   </head>
   <body>
-		<div style="display: none" id="hideAll">
-			<div id='apiYahoo'>
-				<div class="container mainContent">
-					<div class="row">
-						<div class='text-center'>
-							<h1 class='title'>Previsão do Tempo</h1>
-						</div>
-					</div>
+		<div id='apiYahoo' class="container mainContent">
+			<div class="row">
+				<h1 class='title text-center'>Previsão do Tempo</h1>
+			</div>
 
-					<div class='row'>
-						<transition name='fade'>
-							<div class='api' v-if='seen'>
-								<center>				
-									<div class='col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 weatherPanel '>
-										<center>
-											<p class='mainCity'>{{mainCity}}</p>
-											<p class='text-right'><button type="submit" class = 'exitButton' v-on:click="exit += 1, seen = !seen"><i class='glyphicon glyphicon-remove'></i></button></p>
-											<h1 class='mainTemperature'>{{mainTemperature}} {{mainState}}</h1>
-											<div class='informations'>
-												<div class='row informationRow'>
-													<p class='temperature'><i class='glyphicon glyphicon-arrow-down'></i> {{mainLowTemp}}  <i class='glyphicon glyphicon-arrow-up'></i> {{mainHighTemp}}</p>
-													<p class='sensa'>Sensação <strong>{{mainSensation}}</strong></p>
-												</div>
-												<div class='row informationRow'>
-													<p class='wind'>Vento <strong>{{mainSpeed}}</strong></p>
-													<p class='water'> Humidade <strong>{{mainHumidity}}</strong></p>
-												</div>
-											</div>
-											<hr width="400" class='panelLine'>
-											<ul class='list-inline text-center daysTemperatures'>
-												<li>{{firstDay}}
-													<ul class='list-inline listTemperatures'>
-														<li>{{firstDayLowTemp}}</li>
-														<li>{{firstDayHighTemp}}</li>
-														</ul>
-												</li>
-												<li>{{secondDay}}
-													<ul class='list-inline listTemperatures'>
-														<li>{{secondDayLowTemp}}</li>
-														<li>{{secondDayHighTemp}}</li>
-													</ul>
-												</li>
-												<li>{{thirdDay}}
-													<ul class='list-inline listTemperatures'>
-														<li>{{thirdDayLowTemp}}</li>
-														<li>{{thirdDayHighTemp}}</li>
-													</ul>
-												</li>
-												<li>{{fourthDay}}
-													<ul class='list-inline listTemperatures'>
-														<li>{{fourthDayLowTemp}}</li>
-														<li>{{fourthDayHighTemp}}</li>
-													</ul>
-												</li>
-												<li>{{fifthDay}}
-													<ul class='list-inline listTemperatures'>
-														<li>{{fifthDayLowTemp}}</li>
-														<li>{{fifthDayHighTemp}}</li>
-													</ul>
-												</li>
-											</ul>
-										</center>
-									</div>
-								</center>
-							</div>
-						</transition>
-					</div>
-					
-					<div class='row'>
-						<transition name='fade'>
-							<div class='col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 searchError' v-if='searchError'>
-								<h3 class='text-center'>{{searchErrorMessage}}</h3>
-							</div>	
-						</transition>
-					</div>
-
-					<div class="row">
+			<div class='row'>
+				<transition name='fade'>
+					<div class='api' v-if='seen'>
 						<center>
-						 <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-7">
-							 <div id="imaginary_container">
-								 <div class="input-group stylish-input-group">
-									 <input type="search" class="form-control"  placeholder="Insira aqui o nome da cidade" v-model="cityInput" v-on:keyup.enter="counter += 1">
-									<span class="input-group-addon">
-										<button type="submit" v-on:click="counter += 1">
-											<span class="glyphicon glyphicon-search"></span>
-										</button>
-									</span>
+							<div class='col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 weatherPanel '>
+								<p class='mainCity'>{{mainCity}}</p>
+								<p class='text-right'>
+                  <button type="submit" class = 'exitButton'
+                    v-on:click="exit += 1, seen = !seen"><i class='glyphicon glyphicon-remove'></i>
+                  </button>
+                </p>
+								<h1 class='mainTemperature'>{{mainTemperature}} {{mainState}}</h1>
+								<div class='informations'>
+									<div class='row informationRow'>
+										<p class='temperature'><i class='glyphicon glyphicon-arrow-down'></i> {{mainLowTemp}}  <i class='glyphicon glyphicon-arrow-up'></i> {{mainHighTemp}}</p>
+										<p class='sensa'>Sensação <strong>{{mainSensation}}</strong></p>
+									</div>
+									<div class='row informationRow'>
+										<p class='wind'>Vento <strong>{{mainSpeed}}</strong></p>
+										<p class='water'> Humidade <strong>{{mainHumidity}}</strong></p>
 									</div>
 								</div>
+								<hr width="400" class='panelLine'>
+								<ul class='list-inline text-center daysTemperatures'>
+									<li>{{firstDay}}
+										<ul class='list-inline listTemperatures'>
+											<li>{{firstDayLowTemp}}</li>
+											<li>{{firstDayHighTemp}}</li>
+										</ul>
+									</li>
+									<li>{{secondDay}}
+										<ul class='list-inline listTemperatures'>
+											<li>{{secondDayLowTemp}}</li>
+											<li>{{secondDayHighTemp}}</li>
+										</ul>
+									</li>
+									<li>{{thirdDay}}
+										<ul class='list-inline listTemperatures'>
+											<li>{{thirdDayLowTemp}}</li>
+											<li>{{thirdDayHighTemp}}</li>
+										</ul>
+									</li>
+									<li>{{fourthDay}}
+										<ul class='list-inline listTemperatures'>
+											<li>{{fourthDayLowTemp}}</li>
+											<li>{{fourthDayHighTemp}}</li>
+										</ul>
+									</li>
+									<li>{{fifthDay}}
+										<ul class='list-inline listTemperatures'>
+											<li>{{fifthDayLowTemp}}</li>
+											<li>{{fifthDayHighTemp}}</li>
+										</ul>
+									</li>
+								</ul>
 							</div>
 						</center>
 					</div>
+				</transition>
+			</div>
 
-					<div class='row'>
-						<div class='text-center'>
-						<p><hr width="800" class='middleLine visible-md'>
-							<hr width='630' class='middleLine hidden-md'></p>
+			<div class='row'>
+				<transition name='fade'>
+					<div class='col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 searchError' v-if='searchError'>
+						<h3 class='text-center'>{{searchErrorMessage}}</h3>
+					</div>
+				</transition>
+			</div>
+
+			<div class="row">
+				<center>
+				 <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+					 <div class="input-group stylish-input-group">
+						 <input type="search" class="form-control"  placeholder="Insira aqui o nome da cidade" v-model="cityInput" v-on:keyup.enter="counter += 1">
+							<span class="input-group-addon">
+								<button type="submit" v-on:click="counter += 1">
+									<span class="glyphicon glyphicon-search"></span>
+								</button>
+							</span>
 						</div>
 					</div>
-					
-					<div class='row'>
-						<div class='col-md-4 col-md-offset-3 col-sm-5 col-sm-offset-1'>
-						<h2 class='capitais'>Capitais</h2>
-						</div>
-					</div>
-					
-					<div class='row'>
-						<div class='col-md-3 col-md-offset-3 col-sm-5 col-sm-offset-1'>
-							<ul class='list-inline'>
-								<li><p>Min</p>
-									<ul class='list-unstyled list-min-1'>
-										<li>{{firstCapitalLow}}</li>
-										<li>{{secondCapitalLow}}</li>
-										<li>{{thirdCapitalLow}}</li>
-										<li>{{fourthCapitalLow}}</li>
-										<li>{{fifthCapitalLow}}</li>
-									</ul>
-								</li>
-								<li><p>Max</p>
-									<ul class='list-unstyled list-max-1'>
-										<li>{{firstCapitalHigh}}</li>
-										<li>{{secondCapitalHigh}}</li>
-										<li>{{thirdCapitalHigh}}</li>
-										<li>{{fourthCapitalHigh}}</li>
-										<li>{{fifthCapitalHigh}}</li>
-									</ul>
-								</li>
-								<li>
-									<ul class='list-unstyled list-cities-1'>
-										<li> </li>
-										<li>{{firstCapital}}</li>
-										<li>{{secondCapital}}</li>
-										<li>{{thirdCapital}}</li>
-										<li>{{fourthCapital}}</li>
-										<li>{{fifthCapital}}</li>
-									</ul>
-								</li>
-							</ul>
-						</div>
-						<div class='col-md-3 col-sm-5'>
-							<ul class='list-inline'>
-								<li><p>Min</p>
-									<ul class='list-unstyled list-min-2'>
-										<li>{{sixthCapitalLow}}</li>
-										<li>{{seventhCapitalLow}}</li>
-										<li>{{eighthCapitalLow}}</li>
-										<li>{{ninthCapitalLow}}</li>
-										<li>{{tenthCapitalLow}}</li>
-									</ul>
-								</li>
-								<li><p>Max</p>
-									<ul class='list-unstyled list-max-2'>
-										<li>{{sixthCapitalHigh}}</li>
-										<li>{{seventhCapitalHigh}}</li>
-										<li>{{eighthCapitalHigh}}</li>
-										<li>{{ninthCapitalHigh}}</li>
-										<li>{{tenthCapitalHigh}}</li>
-									</ul>
-								</li>
-								<li>
-									<ul class='list-unstyled list-cities-2'>
-										<li> </li>
-										<li>{{sixthCapital}}</li>
-										<li>{{seventhCapital}}</li>
-										<li>{{eighthCapital}}</li>
-										<li>{{ninthCapital}}</li>
-										<li>{{tenthCapital}}</li>
-									</ul>
-								</li>
-							</ul>
-						</div>
-					</div>
+				</center>
+			</div>
+
+			<div class='row'>
+				<div class='text-center'>
+  				<p>
+            <hr width="800" class='middleLine visible-md'>
+  					<hr width='630' class='middleLine hidden-md'>
+          </p>
 				</div>
 			</div>
-			
-			<div class='footer'>
+
+			<div class='row'>
+	      <h2 class='text-center capitais'>Capitais</h2>
 			</div>
-			
-		</div>
+
+			<div class='row capitais_list'>
+				<div class='col-md-3 col-md-offset-3 col-sm-5 col-sm-offset-1'>
+					<ul class='list-inline'>
+						<li><p>Min</p>
+							<ul class='list-unstyled list-min-1'>
+								<li>{{firstCapitalLow}}</li>
+								<li>{{secondCapitalLow}}</li>
+								<li>{{thirdCapitalLow}}</li>
+								<li>{{fourthCapitalLow}}</li>
+								<li>{{fifthCapitalLow}}</li>
+							</ul>
+						</li>
+						<li><p>Max</p>
+							<ul class='list-unstyled list-max-1'>
+								<li>{{firstCapitalHigh}}</li>
+								<li>{{secondCapitalHigh}}</li>
+								<li>{{thirdCapitalHigh}}</li>
+								<li>{{fourthCapitalHigh}}</li>
+								<li>{{fifthCapitalHigh}}</li>
+							</ul>
+						</li>
+						<li>
+							<ul class='list-unstyled list-cities-1'>
+								<li> </li>
+								<li>{{firstCapital}}</li>
+								<li>{{secondCapital}}</li>
+								<li>{{thirdCapital}}</li>
+								<li>{{fourthCapital}}</li>
+								<li>{{fifthCapital}}</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div class='col-md-3 col-sm-5'>
+					<ul class='list-inline'>
+						<li><p>Min</p>
+							<ul class='list-unstyled list-min-2'>
+								<li>{{sixthCapitalLow}}</li>
+								<li>{{seventhCapitalLow}}</li>
+								<li>{{eighthCapitalLow}}</li>
+								<li>{{ninthCapitalLow}}</li>
+								<li>{{tenthCapitalLow}}</li>
+							</ul>
+						</li>
+						<li><p>Max</p>
+							<ul class='list-unstyled list-max-2'>
+								<li>{{sixthCapitalHigh}}</li>
+								<li>{{seventhCapitalHigh}}</li>
+								<li>{{eighthCapitalHigh}}</li>
+								<li>{{ninthCapitalHigh}}</li>
+								<li>{{tenthCapitalHigh}}</li>
+							</ul>
+						</li>
+						<li>
+							<ul class='list-unstyled list-cities-2'>
+								<li> </li>
+								<li>{{sixthCapital}}</li>
+								<li>{{seventhCapital}}</li>
+								<li>{{eighthCapital}}</li>
+								<li>{{ninthCapital}}</li>
+								<li>{{tenthCapital}}</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+    </div>
+
+		<footer>
+		</footer>
+
   </body>
   <!-- IMPORTS FROM JAVASCRIPT -->
 	<script src='js/jquery-3.1.1.min.js'></script>
@@ -198,396 +189,9 @@
 	<script src="https://unpkg.com/vue@2.1.8/dist/vue.js"></script>
 	<script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
 	<script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
-	<script>
-			var apiYahoo = new Vue ({
-				el: '#apiYahoo',
-				data: {
-					cityInput: '',
-					mainCity: '',
-					mainTemperature: '',
-					mainState: '',
-					mainLowTemp: '',
-					mainHighTemp: '',
-					mainSensation: '',
-					mainSpeed: '',
-					mainHumidity: '',
-					firstDay: '',
-					firstDayLowTemp: '',
-					firstDayHighTemp: '',
-					secondDay: '',
-					secondDayLowTemp: '',
-					secondDayHighTemp: '',
-					thirdDay: '',
-					thirdDayLowTemp: '',
-					thirdDayHighTemp: '',
-					fourthDay: '',
-					fourthDayLowTemp: '',
-					fourthDayHighTemp: '',
-					fifthDay: '',
-					fifthDayLowTemp: '',
-					fifthDayHighTemp: '',
-					counter: 0,
-					seen: false,
-					exit: 0,
-					firstCapitalLow: '',
-					secondCapitalLow: '',
-					thirdCapitalLow: '',
-					fourthCapitalLow: '',
-					fifthCapitalLow: '',
-					firstCapitalHigh: '',
-					secondCapitalHigh: '',
-					thirdCapitalHigh: '',
-					fourthCapitalHigh: '',
-					fifthCapitalHigh: '',
-					firstCapital: '',
-					secondCapital: '',
-					thirdCapital: '',
-					fourthCapital: '',
-					fifthCapital: '',
-					sixthCapitalLow: '',
-					seventhCapitalLow: '',
-					eighthCapitalLow: '',
-					ninthCapitalLow: '',
-					tenthCapitalLow: '',
-					sixthCapitalHigh: '',
-					seventhCapitalHigh: '',
-					eighthCapitalHigh: '',
-					ninthCapitalHigh: '',
-					tenthCapitalHigh: '',
-					sixthCapital: '',
-					seventhCapital: '',
-					eighthCapital: '',
-					ninthCapital: '',
-					tenthCapital: '',
-					tempCapital: '',
-					tempLow: '',
-					tempHigh: '',
-					searchErrorMessage: '',
-					searchError: false
-				},
-				beforeMount() {
-					this.searchCapitals()
-
-				},
-				watch: {
-					counter: function () {
-						if (this.cityInput.length > 0) {
-							this.searchCity()	
-						}
-					},
-					exit: function () {
-						this.seen = false
-					}
-				},
-				methods: {
-					searchCity: _.debounce(function () {
-						this.searchError = true
-						this.searchErrorMessage = 'Searching ...'
-						var app = this
-						var query = 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22' + this.cityInput + '%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys'
-						axios.get(query)
-									.then(function(response) {
-										if(response.data.query.count != 0) {
-											var resume = response.data.query.results.channel
-											app.mainCity = resume.location.city + ', ' + resume.location.region + ' - ' + resume.location.country
-											app.mainHumidity = resume.atmosphere.humidity + '%'
-											app.mainTemperature = app.fahrenheitCelsius(resume.item.condition.temp)
-											app.mainState = app.translateCondition(resume.item.condition.text)
-											app.mainLowTemp = app.fahrenheitCelsius(resume.item.forecast[0].low)
-											app.mainHighTemp = app.fahrenheitCelsius(resume.item.forecast[0].high)
-											app.mainSpeed = app.mphKmh(resume.wind.speed)
-											app.mainSensation = 'Nop'
-											app.firstDay = app.translateDays(resume.item.forecast[1].day)
-											app.secondDay = app.translateDays(resume.item.forecast[2].day)
-											app.thirdDay = app.translateDays(resume.item.forecast[3].day)
-											app.fourthDay = app.translateDays(resume.item.forecast[4].day)
-											app.fifthDay = app.translateDays(resume.item.forecast[5].day)
-											app.firstDayLowTemp = app.fahrenheitCelsius(resume.item.forecast[1].low)
-											app.firstDayHighTemp = app.fahrenheitCelsius(resume.item.forecast[1].high)
-											app.secondDayLowTemp = app.fahrenheitCelsius(resume.item.forecast[2].low)
-											app.secondDayHighTemp = app.fahrenheitCelsius(resume.item.forecast[2].high)
-											app.thirdDayLowTemp = app.fahrenheitCelsius(resume.item.forecast[3].low)
-											app.thirdDayHighTemp = app.fahrenheitCelsius(resume.item.forecast[3].high)
-											app.fourthDayLowTemp = app.fahrenheitCelsius(resume.item.forecast[4].low)
-											app.fourthDayHighTemp = app.fahrenheitCelsius(resume.item.forecast[4].high)
-											app.fifthDayLowTemp = app.fahrenheitCelsius(resume.item.forecast[5].low)
-											app.fifthDayHighTemp = app.fahrenheitCelsius(resume.item.forecast[5].high)
-											app.searchError = false
-											app.seen = true
-										}
-									else if (response.data.query.count == 0) {
-										app.seen = false
-										app.searchErrorMessage = 'Cidade Inexistente'
-										}
-									})
-						this.cityOutput = ''
-					}),
-					mphKmh: (function (mph) {
-						var kmh = Math.trunc(Number(Number(mph) * 1.609344)) + 'km/h'
-						return kmh
-					}),
-					fahrenheitCelsius: (function (fah) {
-						var celius = Math.trunc((Number(fah)-32)/1.8)
-						return celius + 'º'
-					}),
-					searchCapitals:  (function () {
-						var app = this
-						var query = this.updateQuery('Rio de Janeiro')
-						axios.get(query).then(function(response) {
-										var resume = response.data.query.results.channel
-										app.firstCapital = resume.location.city
-										app.firstCapitalHigh = app.fahrenheitCelsius(resume.item.forecast[0].high)
-										app.firstCapitalLow = app.fahrenheitCelsius(resume.item.forecast[0].low)
-						})
-						query = this.updateQuery('São Paulo')
-						axios.get(query).then(function(response) {
-										var resume = response.data.query.results.channel
-										app.secondCapital = resume.location.city
-										app.secondCapitalHigh = app.fahrenheitCelsius(resume.item.forecast[0].high)
-										app.secondCapitalLow = app.fahrenheitCelsius(resume.item.forecast[0].low)
-						})
-						query = this.updateQuery('Porto Alegre')
-						axios.get(query).then(function(response) {
-										var resume = response.data.query.results.channel
-										app.thirdCapital = resume.location.city
-										app.thirdCapitalHigh = app.fahrenheitCelsius(resume.item.forecast[0].high)
-										app.thirdCapitalLow = app.fahrenheitCelsius(resume.item.forecast[0].low)
-						})
-						query = this.updateQuery('Brasília')
-						axios.get(query).then(function(response) {
-										var resume = response.data.query.results.channel
-										app.fourthCapital = resume.location.city
-										app.fourthCapitalHigh = app.fahrenheitCelsius(resume.item.forecast[0].high)
-										app.fourthCapitalLow = app.fahrenheitCelsius(resume.item.forecast[0].low)
-						})
-						query = this.updateQuery('Salvador')
-						axios.get(query).then(function(response) {
-										var resume = response.data.query.results.channel
-										app.fifthCapital = resume.location.city
-										app.fifthCapitalHigh = app.fahrenheitCelsius(resume.item.forecast[0].high)
-										app.fifthCapitalLow = app.fahrenheitCelsius(resume.item.forecast[0].low)
-						})
-						query = this.updateQuery('Belo Horizonte')
-						axios.get(query).then(function(response) {
-										var resume = response.data.query.results.channel
-										app.sixthCapital = resume.location.city
-										app.sixthCapitalHigh = app.fahrenheitCelsius(resume.item.forecast[0].high)
-										app.sixthCapitalLow = app.fahrenheitCelsius(resume.item.forecast[0].low)
-						})
-						query = this.updateQuery('Fortaleza')
-						axios.get(query).then(function(response) {
-										var resume = response.data.query.results.channel
-										app.seventhCapital = resume.location.city
-										app.seventhCapitalHigh = app.fahrenheitCelsius(resume.item.forecast[0].high)
-										app.seventhCapitalLow = app.fahrenheitCelsius(resume.item.forecast[0].low)
-						})
-						query = this.updateQuery('Curitiba')
-						axios.get(query).then(function(response) {
-										var resume = response.data.query.results.channel
-										app.eighthCapital = resume.location.city
-										app.eighthCapitalHigh = app.fahrenheitCelsius(resume.item.forecast[0].high)
-										app.eighthCapitalLow = app.fahrenheitCelsius(resume.item.forecast[0].low)
-						})
-						query = this.updateQuery('Manaus')
-						axios.get(query).then(function(response) {
-										var resume = response.data.query.results.channel
-										app.ninthCapital = resume.location.city
-										app.ninthCapitalHigh = app.fahrenheitCelsius(resume.item.forecast[0].high)
-										app.ninthCapitalLow = app.fahrenheitCelsius(resume.item.forecast[0].low)
-						})
-						query = this.updateQuery('Recife')
-						axios.get(query).then(function(response) {
-										var resume = response.data.query.results.channel
-										app.tenthCapital = resume.location.city
-										app.tenthCapitalHigh = app.fahrenheitCelsius(resume.item.forecast[0].high)
-										app.tenthCapitalLow = app.fahrenheitCelsius(resume.item.forecast[0].low)
-						})
-					}),
-					updateQuery: (function (name) {
-						return 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22' + name + '%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys'
-					}),
-					translateDays: (function (text) {
-						switch(text) {
-							case 'Mon':
-								return 'Segunda';
-								break;
-							case 'Tue':
-								return 'Terça';
-								break;
-							case 'Wed':
-								return 'Quarta';
-								break;
-							case 'Thu':
-								return 'Quinta';
-								break;
-							case 'Fri':
-								return 'Sexta';
-								break;
-							case 'Sat':
-								return 'Sabado';
-								break;
-							case 'Sun':
-								return 'Domingo';
-								break;
-							default:
-								return 'Error';
-								break;
-						}
-					}),
-					translateCondition: (function (text) {
-					switch(text) {
-						case 'Tornado':
-							return 'Tornado';                       // tornado
-							break;
-						case 'Tropical Storm':
-							return 'Tempestade tropical';           // tropical storm
-								break;
-						case 'Hurricane':
-							return 'Furacão';                       // hurricane
-								break;
-						case 'Severe Thunderstorms':
-							return 'Tempestade severa';             // severe thunderstorms
-								break;
-						case 'Thunderstorms':
-							return 'Trovoadas';                     // thunderstorms
-								break;
-						case 'Mixed Rain And Snow':
-							return 'Chuva e neve';                  // mixed rain and snow
-								break;
-						case 'Mixed Rain And Sleet':
-							return 'Chuva e granizo fino';          // mixed rain and sleet
-								break;
-						case 'Mixed Snow And Sleet':
-							return 'Neve e granizo fino';           // mixed snow and sleet
-								break;
-						case 'Freezing Drizzle':
-							return 'Garoa gélida';                  // freezing drizzle
-								break;
-						case 'Drizzle':
-							return 'Garoa';                         // drizzle
-								break;
-						case 'Freezing Rain':
-							return 'Chuva gélida';                  // freezing rain
-								break;
-						case 'Showers':
-							return 'Chuvisco';                      // showers
-								break;
-						case 'Showers':
-							return 'Chuva';                         // showers
-								break;
-						case 'Snow Flurries':
-							return 'Neve em flocos finos';          // snow flurries
-								break;
-						case 'Light Snow Showers':
-							return 'Leve precipitação de neve';     // light snow showers
-								break;
-						case 'Blowing Snow':
-							return 'Ventos com neve';               // blowing snow
-								break;
-						case 'Snow':
-							return 'Neve';                          // snow
-								break;
-						case 'Hail':
-							return 'Chuva de granizo';              // hail
-								break;
-						case 'Sleet':
-							return 'Pouco granizo';                 // sleet
-								break;
-						case 'Dust':
-							return 'Pó em suspensão';               // dust
-								break;
-						case 'Foggy':
-							return 'Neblina';                       // foggy
-								break;
-						case 'Haze':
-							return 'Névoa seca';                    // haze
-								break;
-						case 'Smoky':
-							return 'Enfumaçado';                    // smoky
-								break;
-						case 'Blustery':
-							return 'Vendaval';                      // blustery
-								break;
-						case 'Windy':
-							return 'Ventando';                      // windy
-								break;
-						case 'Cold':
-							return 'Frio';                          // cold
-								break;
-						case 'Cloudy':
-							return 'Nublado';                       // cloudy
-								break;
-						case 'Mostly Cloudy':
-							return 'Muitas nuvens';         // mostly cloudy (night)
-								break;
-						case 'Mostly Cloudy':
-							return 'Muitas nuvens';           // mostly cloudy (day)
-								break;
-						case 'Partly Cloudy':
-							return 'Parcialmente nublado';  // partly cloudy (night)
-								break;
-						case 'Partly Cloudy':
-							return 'Parcialmente nublado';    // partly cloudy (day)
-								break;
-						case 'Clear':
-							return 'Céu limpo';             // clear (night)
-								break;
-						case 'Sunny':
-							return 'Ensolarado';                    // sunny
-								break;
-						case 'Fair':
-							return 'Tempo bom';             // fair (night)
-								break;
-						case 'Fair':
-							return 'Tempo bom';               // fair (day)
-								break;
-						case 'Mixed Rain And Rail':
-							return 'Chuva e granizo';               // mixed rain and hail
-								break;
-						case 'Hot':
-							return 'Quente';                        // hot
-								break;
-						case 'Isolated Thunderstorms':
-							return 'Tempestades isoladas';          // isolated thunderstorms
-								break;
-						case 'Scattered Thunderstorms':
-							return 'Tempestades esparsas';          // scattered thunderstorms
-								break;
-						case 'Scattered Thunderstorms':
-							return 'Tempestades esparsas';          // scattered thunderstorms
-								break;
-						case 'Scattered Showers':
-							return 'Chuvas esparsas';               // scattered showers
-								break;
-						case 'Heavy Snow':
-							return 'Nevasca';                       // heavy snow
-								break;
-						case 'Scattered Snow Showers':
-							return 'Tempestades de neve esparsas';  // scattered snow showers
-								break;
-						case 'Heavy Snow':
-							return 'Nevasca';                       // heavy snow
-								break;
-						case 'Partly Cloudy':
-							return 'Parcialmente nublado';          // partly cloudy
-								break;
-						case 'Thundershowers':
-							return 'Chuva com trovoadas';           // thundershowers
-								break;
-						case 'Snow Showers':
-							return 'Tempestade de neve';            // snow showers
-								break;
-						case 'Isolated Thundershowers':
-							return 'relâmpagos e chuvas isoladas';  // isolated thundershowers
-								break;
-						case 'Not Available': return 'Não disponível'               // not available
-					}
-				})
-				}
-			})
-		</script>
-		<!-- LOAD MASK -->
-		<script type="text/javascript">
-			document.getElementById("hideAll").style.display = "block";
-		</script>
+  <script src="js/main.js"></script>
+	<!-- LOAD MASK -->
+	<script type="text/javascript">
+		document.getElementById("apiYahoo").style.display = "block";
+	</script>
 </html>

@@ -31,17 +31,21 @@ body {
 	font-weight: 700;
 	color: white;
 }
+
 .middleLine {
 	margin-top: 80px;
 }
+
 .panelLine {
 	border: 0.1px solid orange;
 }
+
 .weatherPanel {
 	background-color: rgba(255,255,255,0.9);
 	border: 0.1px solid black;
 	margin-bottom: 20px;
 }
+
 .stylish-input-group .input-group-addon{
     background: white !important;
 }
@@ -127,10 +131,6 @@ body {
 	font-weight: 800
 }
 
-.col-sm-6 {
-	
-}
-
 .exitButton {
 	margin-top: 10px;
 	background: transparent;
@@ -151,9 +151,13 @@ body {
 
 @media screen and (max-width:768px) {
 	.middleLine {
-		width:100; 
+		width:100;
 	}
-} 
+}
+
+.capitais_list .list-inline{
+	text-align: center;
+}
 
 .mainContent {
 	max-width: 1000px;
@@ -164,4 +168,9 @@ body {
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
   opacity: 0
+}
+
+/* Hide everything until it loads */
+#apiYahoo {
+  display: none;
 }
